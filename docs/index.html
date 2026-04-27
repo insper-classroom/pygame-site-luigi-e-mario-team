@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kabuto | Bullet Hell em Pygame</title>
+  <meta name="description" content="Landing page do jogo Kabuto, projeto de bullet hell desenvolvido em Python e Pygame.">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Voltar para o início">Kabuto</a>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <ul>
+        <li><a href="#sobre">Jogo</a></li>
+        <li><a href="#telas">Telas</a></li>
+        <li><a href="#video">Vídeo</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#log">Log</a></li>
+        <li><a href="#crap">CRAP</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <p class="eyebrow">Python + Pygame / Bullet hell</p>
+        <h1 id="hero-title">Kabuto</h1>
+        <p class="hero__lead">
+          Sobreviva a uma arena escura, leia padrões de ataque e use dash, parry e controle de distância para ficar vivo contra inimigos cada vez mais agressivos.
+        </p>
+
+        <div class="hero__actions" aria-label="Acoes principais">
+          <a class="button button--primary" href="#download">Baixar pacote</a>
+          <a class="button button--secondary" href="#video">Ver demonstração</a>
+        </div>
+
+        <ul class="hero__facts" aria-label="Resumo rápido do jogo">
+          <li>
+            <strong>WASD</strong>
+            <span>movimento</span>
+          </li>
+          <li>
+            <strong>Shift</strong>
+            <span>dash</span>
+          </li>
+          <li>
+            <strong>E</strong>
+            <span>parry</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hero__stage" aria-label="Composição visual com sprites do jogo">
+        <div class="arena">
+          <img class="arena__background" src="assets/Img/background.png" alt="">
+          <img class="sprite sprite--player" src="assets/Sprites/Player/PlayerParado_01.png" alt="Sprite do personagem principal">
+          <img class="sprite sprite--dozer" src="assets/Sprites/Inimigo/Dozer/dozer_0001.png" alt="Sprite do inimigo Dozer">
+          <img class="sprite sprite--roamer" src="assets/Sprites/Inimigo/Roamer/Roamer.png" alt="Sprite do inimigo Roamer">
+          <img class="sprite sprite--kookoo" src="assets/Sprites/Inimigo/KooKoo/KooKoo_Base.png" alt="Sprite do inimigo KooKoo">
+          <img class="sprite sprite--ghost" src="assets/Sprites/Inimigo/Ghost/ghost_0001.png" alt="Sprite do inimigo Ghost">
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section section--split" aria-labelledby="sobre-title">
+      <div class="section__heading">
+        <p class="eyebrow">Descrição do jogo</p>
+        <h2 id="sobre-title">Uma arena de sobrevivência, reflexo e leitura visual</h2>
+      </div>
+
+      <div class="split-layout">
+        <div class="text-block">
+          <p>
+            Kabuto é um jogo de bullet hell em que o jogador controla uma pequena bolha blindada em uma arena tomada por inimigos. O foco da experiência está em reagir rápido, reconhecer padrões e escolher o momento certo para se mover, desviar ou usar o parry.
+          </p>
+          <p>
+            A direção visual usa pixel art, alto contraste e cores neon sobre fundos escuros para destacar personagem, ameaças e feedbacks importantes durante a partida.
+          </p>
+        </div>
+
+        <div class="feature-list" aria-label="Mecânicas principais">
+          <article>
+            <h3>Dash</h3>
+            <p>Movimento curto para escapar de ataques e atravessar espaços perigosos.</p>
+          </article>
+          <article>
+            <h3>Parry</h3>
+            <p>Ação de tempo preciso para transformar defesa em oportunidade.</p>
+          </article>
+          <article>
+            <h3>Escudo</h3>
+            <p>Camadas de vida comunicam dano e deixam o erro visível imediatamente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="telas" class="section" aria-labelledby="telas-title">
+      <div class="section__heading">
+        <p class="eyebrow">Telas do projeto</p>
+        <h2 id="telas-title">Capturas do jogo</h2>
+      </div>
+
+      <div class="screenshots">
+        <figure class="screenshot screenshot--wide">
+          <img src="assets/Img/tela inicio.png" alt="Tela inicial do jogo Kabuto">
+          <figcaption>Tela inicial com identidade visual escura e título do jogo.</figcaption>
+        </figure>
+        <figure class="screenshot screenshot--tall">
+          <img src="assets/Img/telajogo_01.png" alt="Tela de gameplay do jogo Kabuto">
+          <figcaption>Gameplay vertical com arena, estrelas e inimigos em movimento.</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="assets/Img/gameover.png" alt="Tela de fim de jogo do Kabuto">
+          <figcaption>Tela de game over usada como feedback de derrota.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="video" class="section section--media" aria-labelledby="video-title">
+      <div class="section__heading section__heading--center">
+        <p class="eyebrow">Apresentação curta</p>
+        <h2 id="video-title">Vídeo do jogo funcionando</h2>
+      </div>
+
+      <div class="media-frame">
+        <video controls preload="metadata" poster="assets/Img/tela inicio.png">
+          <source src="assets/video/kabuto-demo.mp4" type="video/mp4">
+          Seu navegador não conseguiu carregar o vídeo. Adicione o arquivo em assets/video/kabuto-demo.mp4.
+        </video>
+      </div>
+    </section>
+
+    <section id="download" class="section section--download" aria-labelledby="download-title">
+      <div class="download-panel">
+        <div>
+          <p class="eyebrow">Download e execução</p>
+          <h2 id="download-title">Baixe o pacote ZIP do jogo</h2>
+          <p>
+            O pacote abaixo aponta para o repositório do jogo. Depois de baixar, extraia o ZIP, instale o Pygame e execute o arquivo principal do projeto em Python.
+          </p>
+
+          <div class="download-actions">
+            <a class="button button--primary" href="https://github.com/insper-classroom/pygame-jogo-luigi-e-mario-team/archive/refs/heads/main.zip">Baixar ZIP</a>
+            <a class="button button--secondary" href="https://github.com/insper-classroom/pygame-jogo-luigi-e-mario-team" target="_blank" rel="noreferrer">Repositório do jogo</a>
+          </div>
+        </div>
+
+        <aside class="run-card" aria-labelledby="run-title">
+          <h3 id="run-title">Como executar</h3>
+          <ol>
+            <li>Baixe e extraia o arquivo ZIP.</li>
+            <li>Abra um terminal na pasta extraída.</li>
+            <li>Instale as dependências com <code>pip install pygame</code>.</li>
+            <li>Execute o jogo com <code>python main.py</code>.</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section id="log" class="section" aria-labelledby="log-title">
+      <div class="section__heading">
+        <p class="eyebrow">Log de desenvolvimento</p>
+        <h2 id="log-title">Registro das principais entregas</h2>
+      </div>
+
+      <ol class="timeline">
+        <li>
+          <time datetime="2026-04-27">27/04/2026</time>
+          <h3>Criando a estrutura do projeto</h3>
+          <p>Commit inicial do repositório e organização dos primeiros arquivos da página.</p>
+        </li>
+        <li>
+          <time datetime="2026-04-27">27/04/2026</time>
+          <h3>Primeira versao da landing page</h3>
+          <p>Página estruturada com título, descrição, telas, equipe, download, instruções, log e espaço para vídeo.</p>
+        </li>
+        <li>
+          <time datetime="2026-04-27">27/04/2026</time>
+          <h3>Publicação pelo GitHub Pages</h3>
+          <p>Arquivos preparados na pasta <code>docs</code>, que deve ser selecionada nas configurações do GitHub Pages.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="equipe" class="section section--team" aria-labelledby="equipe-title">
+      <div class="section__heading section__heading--center">
+        <p class="eyebrow">Membros do grupo</p>
+        <h2 id="equipe-title">Equipe</h2>
+      </div>
+
+      <div class="team-grid">
+        <article class="team-card">
+          <img src="assets/Sprites/Player/PlayerAndando_01.png" alt="">
+          <h3>Luigi</h3>
+          <p>Programação, integração e página do jogo.</p>
+        </article>
+        <article class="team-card">
+          <img src="assets/Sprites/Player/PlayerAndandoGravidade_01.png" alt="">
+          <h3>Mario</h3>
+          <p>Programação, assets e balanceamento do gameplay.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="esboco" class="section" aria-labelledby="esboco-title">
+      <div class="section__heading">
+        <p class="eyebrow">Esboço em papel</p>
+        <h2 id="esboco-title">Planejamento visual inicial</h2>
+      </div>
+
+      <div class="sketch-grid">
+        <figure class="sketch-card">
+          <img src="assets/StoryBoards/StoryBoard_Jogo01.jpg" alt="Foto de esboço em papel com ideias de gameplay do Kabuto">
+          <figcaption>Primeiro esboço em papel com personagem, inimigos e mecânicas.</figcaption>
+        </figure>
+        <figure class="sketch-card">
+          <img src="assets/StoryBoards/StoryBoard_Jogo02.jpg" alt="Foto de esboço em papel com variações de inimigos e ataques">
+          <figcaption>Segundo esboço em papel com variações de ataques e inimigos.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="crap" class="section section--crap" aria-labelledby="crap-title">
+      <div class="section__heading">
+        <p class="eyebrow">Relato CRAP</p>
+        <h2 id="crap-title">Avaliação dos princípios na primeira versão</h2>
+      </div>
+
+      <div class="crap-grid">
+        <article>
+          <h3>Contraste</h3>
+          <p>A página usa fundo escuro e cores fortes nos botões, títulos e sprites para separar ações principais, textos e elementos de gameplay.</p>
+        </article>
+        <article>
+          <h3>Repeticao</h3>
+          <p>Bordas, sombras retas, labels e cards seguem o mesmo padrao visual para reforcar a identidade pixel art do jogo.</p>
+        </article>
+        <article>
+          <h3>Alinhamento</h3>
+          <p>As seções usam colunas, grades e conteúdos centralizados para manter leitura consistente em desktop e celular.</p>
+        </article>
+        <article>
+          <h3>Proximidade</h3>
+          <p>Informações relacionadas ficam agrupadas: download com instruções, telas com legendas, equipe em cards e mecânicas junto da descrição.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>Kabuto</strong> - Projeto de Design de Software / Insper</p>
+    <p>
+      <a href="https://github.com/insper-classroom/pygame-site-luigi-e-mario-team" target="_blank" rel="noreferrer">Repositório do site</a>
+      <a href="https://github.com/insper-classroom/pygame-jogo-luigi-e-mario-team" target="_blank" rel="noreferrer">Repositório do jogo</a>
+    </p>
+  </footer>
+</body>
+</html>
