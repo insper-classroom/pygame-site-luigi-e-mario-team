@@ -52,22 +52,6 @@ A pagina inclui:
 - Esbocos em papel;
 - Relato dos principios CRAP.
 
-## Video de apresentacao
-
-O HTML procura o video em:
-
-```text
-assets/video/kabuto-demo.mp4
-```
-
-Para a versao publicada, o mesmo arquivo tambem deve existir em:
-
-```text
-docs/assets/video/kabuto-demo.mp4
-```
-
-Se a gravacao estiver em outro formato, como `.mkv`, converta ou exporte para `.mp4` e use esse nome.
-
 ## Como executar o jogo
 
 1. Baixe o ZIP pelo link da pagina.
