@@ -618,6 +618,7 @@ h1 {
 
 .timeline {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin: 0;
   padding: 0;
@@ -625,26 +626,45 @@ h1 {
 }
 
 .timeline li {
+  --timeline-accent: var(--cyan);
   position: relative;
+  display: flex;
+  flex-direction: column;
   padding: 1.35rem 1.35rem 1.35rem 1.65rem;
-  border-left: 0.38rem solid var(--cyan);
+  background:
+    linear-gradient(90deg, rgba(98, 243, 255, 0.08), transparent 50%),
+    var(--panel);
+  border-left: 0.38rem solid var(--timeline-accent);
 }
 
-.timeline li:nth-child(2) {
-  border-left-color: var(--pink);
+.timeline li:nth-child(4n + 2) {
+  --timeline-accent: var(--pink);
 }
 
-.timeline li:nth-child(3) {
-  border-left-color: var(--green);
+.timeline li:nth-child(4n + 3) {
+  --timeline-accent: var(--green);
+}
+
+.timeline li:nth-child(4n) {
+  --timeline-accent: var(--yellow);
 }
 
 .timeline time {
   display: inline-flex;
   margin-bottom: 0.55rem;
-  color: var(--cyan);
+  color: var(--timeline-accent);
   font-family: var(--display-font);
   font-size: 0.85rem;
   font-weight: 800;
+}
+
+.timeline .timeline__meta {
+  margin: -0.25rem 0 0.8rem;
+  color: var(--line-bright);
+  font-family: var(--display-font);
+  font-size: 0.73rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .timeline h3 {
@@ -779,6 +799,10 @@ h1 {
   .screenshots,
   .crap-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
   }
 
   .screenshot--tall {
