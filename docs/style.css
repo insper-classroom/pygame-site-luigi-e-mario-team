@@ -167,6 +167,16 @@ main {
   text-transform: uppercase;
 }
 
+/* Eyebrow da hero: reduzido para nao competir com o titulo Kabuto.
+   Mudanca aplicada apos avaliacao CRAP de Vitor Oliveira (Contraste). */
+.eyebrow--hero {
+  margin-bottom: 0.55rem;
+  color: rgba(255, 91, 189, 0.62);
+  font-size: 0.66rem;
+  letter-spacing: 0.18rem;
+  opacity: 0.85;
+}
+
 h1,
 h2,
 h3 {
@@ -492,9 +502,13 @@ h1 {
   font-size: 1.02rem;
 }
 
+/* Grid de capturas reorganizado apos feedback CRAP de Vitor Oliveira (Alinhamento):
+   antes a captura "tall" ficava ao lado de uma "wide" muito maior, criando espaco
+   negativo irregular. Agora a "wide" ocupa toda a primeira linha e as outras duas
+   ficam lado a lado com mesmo peso visual abaixo. */
 .screenshots {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.1rem;
 }
 
@@ -509,11 +523,16 @@ h1 {
 }
 
 .screenshot--wide {
+  grid-column: span 2;
   aspect-ratio: 2 / 1;
 }
 
 .screenshot--tall {
-  grid-row: span 2;
+  aspect-ratio: 4 / 3;
+}
+
+.screenshot:not(.screenshot--wide):not(.screenshot--tall) {
+  aspect-ratio: 4 / 3;
 }
 
 .screenshot img,
@@ -704,11 +723,22 @@ h1 {
 }
 
 .crap-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.crap-intro {
+  max-width: 60rem;
+  margin: 0.6rem 0 1.6rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .crap-grid article {
-  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.4rem;
 }
 
 .crap-grid article:nth-child(1) {
@@ -725,6 +755,179 @@ h1 {
 
 .crap-grid article:nth-child(4) {
   border-top: 0.35rem solid var(--green);
+}
+
+/* Estrutura: feedback recebido (cinza) seguido da acao tomada (destaque ciano).
+   Aplica proximidade: cada card mantem feedback + acao juntos no mesmo bloco. */
+.crap-card__feedback strong,
+.crap-card__action strong {
+  display: inline-block;
+  margin-right: 0.35rem;
+  font-family: var(--display-font);
+  font-size: 0.78rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+.crap-card__feedback strong {
+  color: var(--line-bright);
+}
+
+.crap-card__action {
+  padding-top: 0.85rem;
+  border-top: 0.0625rem solid rgba(98, 243, 255, 0.18);
+  color: #d6e7ff;
+}
+
+.crap-card__action strong {
+  color: var(--cyan);
+}
+
+/* ===== Bestiario (secao de inimigos) =====================================
+   Cada inimigo e um card com sprite, nome, HP e descricao curta. Mantemos a
+   mesma linguagem visual dos outros cards: borda colorida, fundo painel,
+   sombra retangular. */
+.section--enemies {
+  background: linear-gradient(180deg, var(--bg-soft), #0a0d17);
+  border-top: 0.125rem solid var(--line);
+  border-bottom: 0.125rem solid var(--line);
+}
+
+.enemies-intro,
+.waves-intro {
+  max-width: 60rem;
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.enemy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 76rem;
+  margin: 1.2rem auto 0;
+}
+
+.enemy-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.2rem;
+  background: var(--panel);
+  border: 0.125rem solid var(--line);
+  box-shadow: 0.38rem 0.38rem 0 var(--shadow);
+  border-top: 0.35rem solid var(--cyan);
+}
+
+.enemy-card:nth-child(2) { border-top-color: var(--pink); }
+.enemy-card:nth-child(3) { border-top-color: var(--yellow); }
+.enemy-card:nth-child(4) { border-top-color: var(--green); }
+.enemy-card:nth-child(5) { border-top-color: var(--cyan); }
+.enemy-card:nth-child(6) { border-top-color: var(--pink); }
+
+.enemy-card img {
+  width: 5.5rem;
+  height: 5.5rem;
+  align-self: center;
+  margin: 0.4rem 0 0.6rem;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 0.8rem rgba(98, 243, 255, 0.28));
+}
+
+.enemy-card h3 {
+  margin: 0;
+  color: var(--yellow);
+  font-family: var(--display-font);
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.enemy-card p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+/* ===== Voidbreaker (boss section) ========================================
+   Layout split: sprite a esquerda, narrativa a direita. Fundo mais escuro
+   que as outras secoes para reforcar a ideia de "vazio". */
+.section--voidbreaker {
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(255, 91, 189, 0.10), transparent 55%),
+    radial-gradient(ellipse at 75% 60%, rgba(98, 243, 255, 0.08), transparent 55%),
+    #04050b;
+  border-top: 0.125rem solid var(--line);
+  border-bottom: 0.125rem solid var(--line);
+}
+
+.eyebrow--void {
+  color: rgba(255, 91, 189, 0.9);
+}
+
+.voidbreaker-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 2.4rem;
+  align-items: center;
+  max-width: 76rem;
+  margin: 1.4rem auto 0;
+}
+
+.voidbreaker-figure {
+  position: relative;
+  margin: 0;
+  padding: 1.6rem;
+  background:
+    radial-gradient(circle at center, rgba(255, 91, 189, 0.18), transparent 65%),
+    #07091a;
+  border: 0.125rem solid rgba(255, 91, 189, 0.25);
+  box-shadow:
+    0 0 2.5rem rgba(255, 91, 189, 0.25),
+    0.55rem 0.55rem 0 var(--shadow);
+}
+
+.voidbreaker-figure img {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  margin: 0 auto;
+  image-rendering: pixelated;
+  filter:
+    drop-shadow(0 0 1.4rem rgba(255, 91, 189, 0.55))
+    drop-shadow(0 0 0.4rem rgba(98, 243, 255, 0.35));
+}
+
+.voidbreaker-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.voidbreaker-text p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.voidbreaker-tagline {
+  color: var(--pink) !important;
+  font-family: var(--display-font);
+  font-size: 1.05rem !important;
+  font-weight: 800;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+}
+
+.voidbreaker-text strong {
+  color: var(--pink);
+  font-weight: 700;
 }
 
 .site-footer {
@@ -796,9 +999,26 @@ h1 {
     flex-direction: column;
   }
 
-  .screenshots,
-  .crap-grid {
+  .screenshots {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .crap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enemy-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .voidbreaker-layout {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .voidbreaker-figure {
+    max-width: 26rem;
+    margin: 0 auto;
   }
 
   .timeline {
@@ -878,8 +1098,13 @@ h1 {
   .screenshots,
   .team-grid,
   .sketch-grid,
-  .crap-grid {
+  .crap-grid,
+  .enemy-grid {
     grid-template-columns: 1fr;
+  }
+
+  .screenshot--wide {
+    grid-column: auto;
   }
 
   .text-block,

@@ -11,10 +11,12 @@
 <body>
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Voltar para o início">Kabuto</a>
-
+ 
     <nav class="main-nav" aria-label="Navegação principal">
       <ul>
         <li><a href="#sobre">Jogo</a></li>
+        <li><a href="#inimigos">Inimigos</a></li>
+        <li><a href="#voidbreaker">Voidbreaker</a></li>
         <li><a href="#telas">Telas</a></li>
         <li><a href="#video">Vídeo</a></li>
         <li><a href="#download">Download</a></li>
@@ -23,39 +25,43 @@
       </ul>
     </nav>
   </header>
-
+ 
   <main>
     <section id="inicio" class="hero" aria-labelledby="hero-title">
       <div class="hero__content">
-        <p class="eyebrow">Python + Pygame / Bullet hell</p>
+        <p class="eyebrow eyebrow--hero">Python + Pygame / Bullet hell</p>
         <h1 id="hero-title" class="hero__title">
           <img class="hero__title-image" src="assets/Img/titulo_jogo_temp.png" alt="Kabuto">
         </h1>
         <p class="hero__lead">
-          Sobreviva a uma arena escura, leia padrões de ataque e use dash, parry e controle de distância para ficar vivo contra inimigos cada vez mais agressivos.
+          Sobreviva a 7 ondas em uma arena escura, leia padrões de ataque e use dash com iframes para escapar de inimigos cada vez mais agressivos. No final, encare o boss VoidBreaker em uma luta com fases.
         </p>
-
+ 
         <div class="hero__actions" aria-label="Acoes principais">
           <a class="button button--primary" href="#download">Baixar pacote</a>
           <a class="button button--secondary" href="#video">Ver demonstração</a>
         </div>
-
+ 
         <ul class="hero__facts" aria-label="Resumo rápido do jogo">
           <li>
             <strong>WASD</strong>
             <span>movimento</span>
           </li>
           <li>
-            <strong>Shift</strong>
+            <strong>Clique esq.</strong>
+            <span>atirar</span>
+          </li>
+          <li>
+            <strong>Clique dir.</strong>
             <span>dash</span>
           </li>
           <li>
-            <strong>E</strong>
-            <span>parry</span>
+            <strong>Controle</strong>
+            <span>suportado</span>
           </li>
         </ul>
       </div>
-
+ 
       <div class="hero__stage" aria-label="Composição visual com sprites do jogo">
         <div class="arena">
           <img class="arena__background" src="assets/Img/background.png" alt="">
@@ -67,46 +73,113 @@
         </div>
       </div>
     </section>
-
+ 
     <section id="sobre" class="section section--split" aria-labelledby="sobre-title">
       <div class="section__heading">
         <p class="eyebrow">Descrição do jogo</p>
         <h2 id="sobre-title">Uma arena de sobrevivência, reflexo e leitura visual</h2>
       </div>
-
+ 
       <div class="split-layout">
         <div class="text-block">
           <p>
-            Kabuto é um jogo de bullet hell em que o jogador controla uma pequena bolha blindada em uma arena tomada por inimigos. O foco da experiência está em reagir rápido, reconhecer padrões e escolher o momento certo para se mover, desviar ou usar o parry.
+            Kabuto é um jogo de bullet hell em que o jogador controla uma pequena bolha blindada em uma arena tomada por inimigos. O foco da experiência está em reagir rápido, reconhecer padrões e escolher o momento certo para se mover, atirar ou dar dash.
           </p>
           <p>
-            A direção visual usa pixel art, alto contraste e cores neon sobre fundos escuros para destacar personagem, ameaças e feedbacks importantes durante a partida.
+            A direção visual usa pixel art, alto contraste e cores neon sobre fundos escuros para destacar personagem, ameaças e feedbacks importantes durante a partida. O jogo suporta teclado + mouse e também controle (joystick), com aim independente do movimento.
           </p>
         </div>
-
+ 
         <div class="feature-list" aria-label="Mecânicas principais">
           <article>
-            <h3>Dash</h3>
-            <p>Movimento curto para escapar de ataques e atravessar espaços perigosos.</p>
+            <h3>Dash com iframes</h3>
+            <p>Movimento rápido em 8 direções (200ms de duração, 2s de cooldown) que concede invulnerabilidade durante o deslocamento.</p>
           </article>
           <article>
-            <h3>Parry</h3>
-            <p>Ação de tempo preciso para transformar defesa em oportunidade.</p>
+            <h3>Escudos em camadas</h3>
+            <p>O personagem tem 3 escudos coloridos: azul (3), amarelo (2) e vermelho (1). Cada hit remove uma camada e dá 2s de iframes.</p>
           </article>
           <article>
-            <h3>Escudo</h3>
-            <p>Camadas de vida comunicam dano e deixam o erro visível imediatamente.</p>
+            <h3>Combo e moedas</h3>
+            <p>Mate inimigos em sequência para acumular combo. Levar dano quebra a sequência. Inimigos derrotados dropam moedas que viram pontos.</p>
           </article>
         </div>
       </div>
     </section>
-
+ 
+    <section id="inimigos" class="section section--enemies" aria-labelledby="inimigos-title">
+      <div class="section__heading">
+        <p class="eyebrow">Bestiário</p>
+        <h2 id="inimigos-title">Inimigos da arena</h2>
+        <p class="enemies-intro">
+          Cada onda combina inimigos com padrões de ataque diferentes. Aprender a leitura visual de cada tipo é o que mantém você vivo.
+        </p>
+      </div>
+ 
+      <div class="enemy-grid">
+        <article class="enemy-card">
+          <img src="assets/Sprites/Inimigo/Roamer/Roamer.png" alt="Sprite do Roamer">
+          <h3>Roamer</h3>
+          <p>Persegue o jogador e dá dashes longos quando entra no alcance. Anuncia o ataque com som de grito.</p>
+        </article>
+        <article class="enemy-card">
+          <img src="assets/Sprites/Inimigo/Ghost/ghost_0001.png" alt="Sprite do Ghost">
+          <h3>Ghost</h3>
+          <p>Mantém distância e atira rajadas de 3 projéteis em leque a cada 2 segundos.</p>
+        </article>
+        <article class="enemy-card">
+          <img src="assets/Sprites/Inimigo/KooKoo/KooKoo_Base.png" alt="Sprite do KooKoo">
+          <h3>KooKoo</h3>
+          <p>Conta entre 6 e 15 batidas, teleporta entre elas e gera 50 clones visuais ao final do ciclo.</p>
+        </article>
+        <article class="enemy-card">
+          <img src="assets/Sprites/Inimigo/Dozer/dozer_0001.png" alt="Sprite do Dozer">
+          <h3>Dozer</h3>
+          <p>Aparece no centro, dorme por 3s e abre uma janela de 200ms. Se você se mover dentro da janela, dispara um jumpscare.</p>
+        </article>
+        <article class="enemy-card">
+          <img src="assets/Sprites/Inimigo/ICBM/ICBM_0001.png" alt="Sprite do ICBM">
+          <h3>ICBM</h3>
+          <p>Cai do topo da tela e explode em contato (ou se o jogador estiver perto). Tira um escudo direto.</p>
+        </article>
+      </div>
+    </section>
+ 
+    <section id="voidbreaker" class="section section--voidbreaker" aria-labelledby="voidbreaker-title">
+      <div class="section__heading">
+        <p class="eyebrow eyebrow--void">Ameaça final</p>
+        <h2 id="voidbreaker-title">Voidbreaker</h2>
+      </div>
+ 
+      <div class="voidbreaker-layout">
+        <figure class="voidbreaker-figure" aria-label="Imagem do boss Voidbreaker">
+          <img src="assets/Sprites/Inimigo/VoidBreaker/voidbreaker_0001.png" alt="Sprite do boss Voidbreaker">
+        </figure>
+ 
+        <div class="voidbreaker-text">
+          <p class="voidbreaker-tagline">Um ser criado literalmente da matéria escura.</p>
+ 
+          <p>
+            Voidbreaker não nasceu, não foi invocado e não tem origem que se possa apontar. Ele se condensou da própria matéria escura — o tecido invisível que sustenta o universo — quando esse tecido começou a se romper. Onde a luz não chega, ele se acumula. Onde a estrutura cede, ele assume o lugar.
+          </p>
+ 
+          <p>
+            Seu único objetivo é <strong>propagar o vazio</strong>. Cada partida é uma tentativa de fissurar mais um pedaço da realidade, abrir uma rachadura por onde o nada possa escorrer e tomar conta. Você é apenas a última coisa entre ele e essa expansão.
+          </p>
+ 
+          <p>
+            Em batalha, ele alterna entre perseguir, preparar e disparar dashes cortantes, lançando rajadas radiais entre cada investida. Quando metade do que o sustenta é dilacerada, sua forma entra em fúria: o ritmo dos ataques colapsa e o céu passa a chover bombas — fragmentos do próprio vazio caindo sobre a arena.
+          </p>
+        </div>
+      </div>
+    </section>
+ 
     <section id="telas" class="section" aria-labelledby="telas-title">
       <div class="section__heading">
         <p class="eyebrow">Telas do projeto</p>
         <h2 id="telas-title">Capturas do jogo</h2>
       </div>
-
+ 
       <div class="screenshots">
         <figure class="screenshot screenshot--wide">
           <img src="assets/Img/tela inicio.png" alt="Tela inicial do jogo Kabuto">
@@ -122,13 +195,13 @@
         </figure>
       </div>
     </section>
-
+ 
     <section id="video" class="section section--media" aria-labelledby="video-title">
       <div class="section__heading section__heading--center">
         <p class="eyebrow">Apresentação curta</p>
         <h2 id="video-title">Vídeo do jogo funcionando</h2>
       </div>
-
+ 
       <div class="media-frame">
         <video controls preload="metadata" poster="assets/Img/video_foto.png" aria-label="Vídeo de demonstração do jogo Kabuto">
           <source src="assets/video/video.mp4" type="video/mp4">
@@ -136,7 +209,7 @@
         </video>
       </div>
     </section>
-
+ 
     <section id="download" class="section section--download" aria-labelledby="download-title">
       <div class="download-panel">
         <div>
@@ -145,13 +218,13 @@
           <p>
             O pacote abaixo aponta para o repositório do jogo. Depois de baixar, extraia o ZIP, instale o Pygame e execute o arquivo principal do projeto em Python.
           </p>
-
+ 
           <div class="download-actions">
             <a class="button button--primary" href="https://github.com/insper-classroom/pygame-jogo-luigi-e-mario-team/archive/refs/heads/main.zip">Baixar ZIP</a>
             <a class="button button--secondary" href="https://github.com/insper-classroom/pygame-jogo-luigi-e-mario-team" target="_blank" rel="noreferrer">Repositório do jogo</a>
           </div>
         </div>
-
+ 
         <aside class="run-card" aria-labelledby="run-title">
           <h3 id="run-title">Como executar</h3>
           <ol>
@@ -163,13 +236,13 @@
         </aside>
       </div>
     </section>
-
+ 
     <section id="log" class="section" aria-labelledby="log-title">
       <div class="section__heading">
         <p class="eyebrow">Log de desenvolvimento</p>
         <h2 id="log-title">Principais marcos do projeto</h2>
       </div>
-
+ 
       <ol class="timeline">
         <li>
           <time datetime="2026-04-16">16/04/2026</time>
@@ -221,19 +294,31 @@
         </li>
         <li>
           <time datetime="2026-04-28">28/04/2026</time>
-          <p class="timeline__meta">Polimento final / Luigiverderio e NotMariEP</p>
+          <p class="timeline__meta">Polimento / Luigiverderio e NotMariEP</p>
           <h3>Dozer, Flesh e ajustes finais</h3>
-          <p>Entrada dos inimigos finais citados no histórico, como Dozer e Flesh, além dos últimos ajustes de comportamento antes da publicação da página.</p>
+          <p>Entrada dos inimigos Dozer e Flesh, ajustes de comportamento e primeiros testes integrados das ondas.</p>
+        </li>
+        <li>
+          <time datetime="2026-04-29">29/04/2026</time>
+          <p class="timeline__meta">Boss e fechamento / Luigiverderio e NotMariEP</p>
+          <h3>VoidBreaker e tela de vitória</h3>
+          <p>Implementação do boss VoidBreaker (120 HP, fases, chuva de bombas) e da tela de vitória que aparece após derrotá-lo. Trilha sonora dedicada ao boss.</p>
+        </li>
+        <li>
+          <time datetime="2026-04-30">30/04/2026</time>
+          <p class="timeline__meta">Controles e UX / Luigiverderio e NotMariEP</p>
+          <h3>Suporte a controle e Guardian</h3>
+          <p>Suporte completo a controle/joystick com aim independente, deadzone e dash mapeado em botão. Adição do inimigo Guardian e da cena de Habilidades acessível pelo menu.</p>
         </li>
       </ol>
     </section>
-
+ 
     <section id="equipe" class="section section--team" aria-labelledby="equipe-title">
       <div class="section__heading section__heading--center">
         <p class="eyebrow">Membros do grupo</p>
         <h2 id="equipe-title">Equipe</h2>
       </div>
-
+ 
       <div class="team-grid">
         <article class="team-card">
           <img src="assets/Sprites/Player/PlayerAndando_01.png" alt="">
@@ -247,13 +332,13 @@
         </article>
       </div>
     </section>
-
+ 
     <section id="esboco" class="section" aria-labelledby="esboco-title">
       <div class="section__heading">
         <p class="eyebrow">Esboço em papel</p>
         <h2 id="esboco-title">Planejamento visual inicial</h2>
       </div>
-
+ 
       <div class="sketch-grid">
         <figure class="sketch-card">
           <img src="assets/StoryBoards/StoryBoard_Jogo01.jpg" alt="Foto de esboço em papel com ideias de gameplay do Kabuto">
@@ -265,34 +350,57 @@
         </figure>
       </div>
     </section>
-
+ 
     <section id="crap" class="section section--crap" aria-labelledby="crap-title">
       <div class="section__heading">
         <p class="eyebrow">Relato CRAP</p>
-        <h2 id="crap-title">Avaliação dos princípios na primeira versão</h2>
+        <h2 id="crap-title">Como as avaliações recebidas influenciaram o design</h2>
+        <p class="crap-intro">
+          Recebemos duas avaliações dos princípios CRAP sobre a primeira versão da página: uma do Vitor Oliveira e outra do Grupo Magenta. Os feedbacks apontaram pontos positivos e problemas concretos em cada princípio. Abaixo está o que cada avaliação trouxe e o que mudamos no site em resposta.
+        </p>
       </div>
-
+ 
       <div class="crap-grid">
         <article>
           <h3>Contraste</h3>
-          <p>A página usa fundo escuro e cores fortes nos botões, títulos e sprites para separar ações principais, textos e elementos de gameplay.</p>
+          <p class="crap-card__feedback">
+            <strong>Feedback recebido:</strong> os cards de mecânicas (Dash, Parry, Escudo) tinham boa hierarquia, mas o subtítulo da seção de abertura estava maior que o próprio nome do jogo, e o rótulo "Python + Pygame / Bullet Hell" competia visualmente com o título principal.
+          </p>
+          <p class="crap-card__action">
+            <strong>O que mudamos:</strong> reduzimos o peso visual do rótulo "Python + Pygame / Bullet Hell" (eyebrow menor e mais discreto) para que ele não compita mais com o título do jogo. Também reforçamos o brilho e a sombra do logo "Kabuto" para deixar claro que ele é o protagonista da hero section.
+          </p>
         </article>
         <article>
-          <h3>Repeticao</h3>
-          <p>Bordas, sombras retas, labels e cards seguem o mesmo padrao visual para reforcar a identidade pixel art do jogo.</p>
+          <h3>Repetição</h3>
+          <p class="crap-card__feedback">
+            <strong>Feedback recebido:</strong> o padrão dos cards de mecânicas é consistente e reforça a identidade pixel art, mas o "Log de Desenvolvimento" tinha as três entradas com a mesma data (27/04/2026), o que dava a impressão de que o projeto não evoluiu ao longo do tempo.
+          </p>
+          <p class="crap-card__action">
+            <strong>O que mudamos:</strong> expandimos o log para doze entregas distribuídas entre 16/04 e 30/04, cada uma com data, autores, título e descrição diferentes. Agora a repetição reforça estrutura visual sem repetir conteúdo idêntico.
+          </p>
         </article>
         <article>
           <h3>Alinhamento</h3>
-          <p>As seções usam colunas, grades e conteúdos centralizados para manter leitura consistente em desktop e celular.</p>
+          <p class="crap-card__feedback">
+            <strong>Feedback recebido:</strong> o alinhamento geral funciona bem, mas a seção "Capturas do Jogo" tinha duas imagens lado a lado com tamanhos muito diferentes, gerando desequilíbrio no grid e espaço negativo irregular embaixo da segunda imagem.
+          </p>
+          <p class="crap-card__action">
+            <strong>O que mudamos:</strong> reorganizamos a galeria de capturas para usar uma grade equilibrada com três imagens (uma horizontal larga, uma vertical alta e a tela de game over), sem cantos vazios. Cada figura mantém o mesmo padrão de borda, sombra e legenda.
+          </p>
         </article>
         <article>
           <h3>Proximidade</h3>
-          <p>Informações relacionadas ficam agrupadas: download com instruções, telas com legendas, equipe em cards e mecânicas junto da descrição.</p>
+          <p class="crap-card__feedback">
+            <strong>Feedback recebido:</strong> a seção da equipe e os cards de mecânicas agrupam bem as informações, mas as legendas das capturas do jogo ficavam mais perto da imagem seguinte do que da imagem que descreviam, quebrando a relação imagem+texto.
+          </p>
+          <p class="crap-card__action">
+            <strong>O que mudamos:</strong> as legendas agora ficam fixas dentro do mesmo card da imagem, com borda superior dividindo imagem e texto, e o espaçamento entre cards é maior do que o espaço interno entre imagem e legenda — deixando claro qual texto pertence a qual captura.
+          </p>
         </article>
       </div>
     </section>
   </main>
-
+ 
   <footer class="site-footer">
     <p><strong>Kabuto</strong> - Projeto de Design de Software / Insper</p>
     <p>
